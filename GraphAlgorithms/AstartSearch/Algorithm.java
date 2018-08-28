@@ -23,7 +23,9 @@ public class Algorithm {
 
 
 
-  
+  public double heuristic(Node node1, Node node2){
+    return Math.abs( node1.getX() - node2.getX() ) + Math.abs( node2.getY() - node2.getY() );
+  }
 
 
 
