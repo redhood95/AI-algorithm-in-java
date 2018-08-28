@@ -37,6 +37,38 @@ public class Algorithm {
     unexploredNodesQueue.add(sourceNode);
     boolean found = false;
 
+    while ( !unexploredNodesQueue.isEmpty() && !found ) {
+
+      Node currentNode = unexploredNodesQueue.poll();
+      exploredNodes.add(currentNode);
+
+      if (currentNode.getValue().equals(goalNode.getValue())) {
+        found = true;
+      }
+
+      for (Edge e : currentNode.getAdjacenciesList()) {
+        Node childNode = e.getTargetNode();
+        double cost = e.getCost();
+        double tempGScore = currentNode.getgScore() + cost;
+        double tempFScore = tempGScore + heuristic(childNode, goalNode);
+
+        if( exploredNodes.contains(childNode) && (tempFScore >= childNode.getfScore()) ) {
+          continue;
+        } else if ( !unexploredNodesQueue.contains(childNode) || (tempFScore < childNode.getfScore()) ) {
+
+          childNode.setParentNode(currentNode);
+          childNode.setgScore(tempGScore);
+          childNode.setfScore(tempFScore);
+
+          if (unexploredNodesQueue.contains(childNode)) {
+            unexploredNodesQueue.remove(childNode);
+          }
+
+          unexploredNodesQueue.add(childNode);
+        }
+      }
+    }
+
 
 
 }
