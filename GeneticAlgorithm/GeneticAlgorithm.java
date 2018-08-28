@@ -45,6 +45,17 @@ private Individual crossover(Individual firstIndividual, Individual secondIndivi
     return newSolution;
 }
 
+private void mutate(Individual individual) {
+
+    for (int geneIndex = 0; geneIndex < Constants.GENE_LENGTH; ++geneIndex) {
+
+      if (Math.random() <= Constants.MUTATION_RATE) {
+            int gene = randomGenerator.nextInt(10);
+            individual.setGene(geneIndex, gene);
+        }
+    }
+}
+
 
 
   private Individual randomSelection(Population population){
