@@ -29,7 +29,21 @@ public Population evolvePopulation(Population population){
   return newPopulation;
 }
 
+private Individual crossover(Individual firstIndividual, Individual secondIndividual) {
 
+  Individual newSolution = new Individual();
+
+    for (int geneIndex = 0; geneIndex < Constants.GENE_LENGTH; ++geneIndex) {
+
+        if (Math.random() <= Constants.UNIFORM_RATE) {
+            newSolution.setGene(geneIndex, firstIndividual.getGene(geneIndex));
+        } else {
+            newSolution.setGene(geneIndex, secondIndividual.getGene(geneIndex));
+        }
+    }
+
+    return newSolution;
+}
 
 
 
