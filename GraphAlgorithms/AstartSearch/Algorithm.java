@@ -28,6 +28,19 @@ public class Algorithm {
   }
 
 
+  public void aStarSearch(Node sourceNode, Node goalNode) {
+
+    Set<Node> exploredNodes = new HashSet<Node>();
+
+    PriorityQueue<Node> unexploredNodesQueue = new PriorityQueue<Node>();
+    sourceNode.setgScore(0);
+    unexploredNodesQueue.add(sourceNode);
+    boolean found = false;
+
+
+
+}
+
 
 
 
