@@ -8,5 +8,31 @@ public class SimulatedAnnealing {
 	private double nextCoordinateX;
 	private double bestCoordinateX;
 
-	
+	public SimulatedAnnealing(){
+		this.randomGenerator = new Random();
+	}
+
+	private double getEnergy(double x) {
+		return f(x);
+	}
+
+	private double getRandomX() {
+		return randomGenerator.nextDouble()*(Constants.MAX_COORDINATE - Constants.MIN_COORDINATE) + Constants.MIN_COORDINATE;
+	}
+
+	private double f(double x){
+		return (x-0.3)*(x-0.3)*(x-0.3)-5*x+x*x-2;
+	}
+
+	public double acceptanceProbability(double energy, double newEnergy, double temperature) {
+
+		// If the new solution is better, accept it
+		if (newEnergy < energy) {
+			return 1.0;
+		}
+
+		// If the new solution is worse, calculate an acceptance probability
+		// T is small: we accept worse solutions with lower probability !!!
+		return Math.exp((energy - newEnergy) / temperature);
+	}
 }
