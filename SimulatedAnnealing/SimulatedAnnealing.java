@@ -46,9 +46,19 @@ public class SimulatedAnnealing {
 
 			double currentEnergy = getEnergy(currentCoordinateX);
 			double newEnergy = getEnergy(nextCoordinateX);
+			if( acceptanceProbability(currentEnergy, newEnergy, temperature) > Math.random() ){
+				currentCoordinateX = nextCoordinateX;
+			}
+
+			if( f(currentCoordinateX) < f(bestCoordinateX)){
+				bestCoordinateX = currentCoordinateX;
+			}
+
+			temperature *= 1 - Constants.COOLING_RATE;
+			}
 
 
-		
+
 		System.out.println("Global extremum is: x="+bestCoordinateX +  "f(x) = " + f(bestCoordinateX));
 
 	}
