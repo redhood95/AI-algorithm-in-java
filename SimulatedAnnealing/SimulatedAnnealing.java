@@ -35,4 +35,21 @@ public class SimulatedAnnealing {
 		// T is small: we accept worse solutions with lower probability !!!
 		return Math.exp((energy - newEnergy) / temperature);
 	}
+
+	public void findOptimum(){
+
+		double temperature = Constants.START_TEMPERATURE;
+
+		while( temperature > Constants.MIN_TEMPERATURE ){
+
+			nextCoordinateX = getRandomX();
+
+			double currentEnergy = getEnergy(currentCoordinateX);
+			double newEnergy = getEnergy(nextCoordinateX);
+
+
+		
+		System.out.println("Global extremum is: x="+bestCoordinateX +  "f(x) = " + f(bestCoordinateX));
+
+	}
 }
