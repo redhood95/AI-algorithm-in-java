@@ -1,18 +1,20 @@
 package breadthFirstSearch;
 
+/*purpose of this class is to create the graph data structure for the purpose of traversal*/
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Vertex {
-	
+
 	private int data;
-	
+
 	private boolean visited;
-	
+
 	private List<Vertex> neighbourList;
-	
+
 	public Vertex(int data) {
-		
+
 		this.data = data;
 		this.neighbourList = new ArrayList<>();
 		}
@@ -40,16 +42,16 @@ public class Vertex {
 	public void setNeighbourList(List<Vertex> neighbourList) {
 		this.neighbourList = neighbourList;
 	}
-	
-	
+
+
 	public void addNeighbourVertex(Vertex vertex) {
 		this.neighbourList.add(vertex);
 	}
-	
+
 	@Override
 	public String toString() {
 		return ""+this.data;
 	}
-	
+
 
 }
